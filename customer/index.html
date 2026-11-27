@@ -1,0 +1,251 @@
+<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>গ্রাহক ও Refer & Earn পোর্টাল · Trishna Power Solution</title>
+<style>
+:root{--g:#0f6b3f;--o:#f59e0b;--ink:#10243a;--mut:#5b6b7c;--bg:#f3f7f4}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,'Noto Sans Bengali',sans-serif;background:var(--bg);color:var(--ink)}
+.w{max-width:600px;margin:0 auto;padding:16px}
+.brand{display:flex;gap:10px;align-items:center;margin:8px 0 14px}.brand img{width:44px;height:44px;border-radius:10px;object-fit:cover;background:#000}.brand b{display:block;letter-spacing:.5px}.brand small{color:var(--mut)}
+.card{background:#fff;border-radius:16px;padding:18px;box-shadow:0 4px 18px #0b2a1a14;margin-bottom:14px}
+h1{font-size:20px;margin:0 0 6px}h3{margin:0 0 8px}h4{margin:10px 0 4px}label{display:block;font-weight:700;font-size:13px;margin:10px 0 4px}
+input,select,textarea{width:100%;padding:11px;border:1.5px solid #cfd9d2;border-radius:10px;font:inherit}
+.btn{background:var(--g);color:#fff;border:0;border-radius:10px;padding:12px 18px;font:inherit;font-weight:800;cursor:pointer;width:100%;margin-top:14px}
+.btn.alt{background:#e8eef0;color:var(--ink)}.btn.red{background:#c0341d}.btn.wa{background:#25d366}.btn.sm{width:auto;padding:7px 12px;margin:0;font-size:13px}
+.err{background:#ffe3dc;color:#a52714;padding:9px;border-radius:8px;margin-top:10px}.ok{background:#d9f5e4;color:#0f6b3f;padding:9px;border-radius:8px;margin-top:10px}
+.pill{display:inline-block;border-radius:99px;padding:3px 12px;font-size:13px;font-weight:800;background:#eef2f6}.y{background:#fff1c9;color:#8a5a00}.g{background:#d9f5e4;color:#0f6b3f}.r{background:#ffe3dc;color:#a52714}.b{background:#dcecfa;color:#164e78}
+.note{font-size:12.5px;color:var(--mut);line-height:1.5}.tabs{display:flex;gap:6px;margin-bottom:12px;overflow:auto}.tabs button{flex:0 0 auto;padding:10px 14px;border:0;border-radius:10px;background:#e1ebe4;font-weight:800;cursor:pointer;white-space:nowrap}.tabs .on{background:var(--g);color:#fff}
+.chk{display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:13px}.chk input{width:auto;margin-top:3px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:480px){.row{grid-template-columns:1fr}}
+.ad{background:linear-gradient(135deg,#0f6b3f,#1d8a55);color:#fff;border-radius:16px;padding:16px;margin-bottom:14px}.ad b{color:#ffd37a}.ad a{color:#fff;font-weight:800}
+.steps{display:flex;margin:12px 0}.steps div{flex:1;text-align:center;font-size:11px;color:var(--mut);position:relative}.steps i{display:block;width:26px;height:26px;line-height:26px;border-radius:50%;background:#dfe7e2;margin:0 auto 4px;font-style:normal;font-weight:900}.steps .d i{background:var(--g);color:#fff}.steps .d{color:var(--ink);font-weight:700}
+.code{font-size:26px;font-weight:900;letter-spacing:2px;color:var(--g);text-align:center;background:#eaf7ef;border-radius:12px;padding:10px}
+.item{border-top:1px solid #edf1ee;padding:10px 0}details{margin:8px 0}summary{cursor:pointer}
+video{width:100%;border-radius:14px;background:#000;margin-bottom:10px}
+.pc{background:linear-gradient(135deg,#0f6b3f,#1d8a55);color:#fff;border-radius:14px;padding:16px;margin-top:10px}.pc b{color:#ffd37a}
+</style></head><body><div class="w" id="app"></div>
+<script>
+var CFG={url:'https://zqvxwossbgocmkxllnyq.supabase.co',key:'sb_publishable_ixwubKhJbalcW3N9lVuySw_ExhqxBl6',site:'https://trishnapowersolution.blogspot.com/',wa:'919862768900',base:'https://deltatanmoy.github.io/trishna-assets/customer/'};
+var sb,C,R,tab='me',$=function(s){return document.querySelector(s);},Q=new URLSearchParams(location.search);
+var STG=[['lead','লিড'],['surveyed','সার্ভে'],['quoted','কোটেশন'],['confirmed','কনফার্ম'],['installed','ইনস্টল'],['closed','সম্পন্ন']];
+var RS={submitted:'জমা হয়েছে',contacted:'যোগাযোগ হয়েছে',confirmed:'কনফার্ম',installed:'ইনস্টল হয়েছে',rejected:'বাতিল'},RW={none:'',approved:'রিওয়ার্ড অনুমোদিত',paid:'রিওয়ার্ড পরিশোধিত',cancelled:''};
+var ROLEN={md:'Managing Director',owner:'Owner',hr:'HR',finance:'Finance',district_manager:'District Manager',admin:'Admin',awareness_executive:'Solar Awareness Executive',installation_technician:'Solar Installation Technician',social_media_manager:'Social Media Manager'};
+function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function inr(n){return '₹'+Number(n||0).toLocaleString('en-IN');}
+function head(){return '<div class="brand"><img src="../media/logo-shield.jpg" alt=""><div><b>TRISHNA POWER SOLUTION</b><small>গ্রাহক ও Refer &amp; Earn পোর্টাল</small></div></div>';}
+function ad(){return '<div class="ad"><b>☀ সোলারে বিদ্যুৎ বিল কমান ২৫ বছর!</b><p style="margin:6px 0 10px;font-size:13px">On-Grid · Hybrid · Off-Grid · সরকারি ভর্তুকিতে সহায়তা (শর্ত প্রযোজ্য) · সহজ EMI</p><a href="'+CFG.site+'">ওয়েবসাইট</a> &nbsp; <a href="https://wa.me/'+CFG.wa+'">WhatsApp</a> &nbsp; <a href="tel:+919862768900">📞 98627 68900</a> &nbsp; <a href="tel:+916009115490">60091 15490</a></div>';}
+function rich(t){var h='',ul=false;String(t||'').split('\n').forEach(function(l){var li=/^\s*[-•]\s+/.test(l);if(ul&&!li){h+='</ul>';ul=false;}
+  if(li){if(!ul){h+='<ul>';ul=true;}h+='<li>'+esc(l.replace(/^\s*[-•]\s+/,''))+'</li>';}else if(/^#\s/.test(l))h+='<h4>'+esc(l.slice(2))+'</h4>';else if(l.trim())h+='<p>'+esc(l)+'</p>';});return h+(ul?'</ul>':'');}
+function boot(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';
+  s.onload=function(){sb=window.supabase.createClient(CFG.url,CFG.key);
+    if(Q.get('verify')){verify(Q.get('verify'));return;}
+    if(Q.get('cert')){certVerify(Q.get('cert'));return;}
+    sb.auth.getSession().then(function(r){r.data.session?home():auth(Q.get('ref')?'up':'in');});};
+  s.onerror=function(){$('#app').innerHTML=head()+'<div class="card">ইন্টারনেট সংযোগ দেখে আবার চেষ্টা করুন।</div>';};document.head.appendChild(s);}
+
+/* ---- public ID verification (QR on staff ID cards) ---- */
+function verify(code){sb.rpc('verify_staff',{p_code:code}).then(function(r){var p=r.data&&r.data[0];
+  $('#app').innerHTML=head()+'<div class="card"><h1>🪪 কর্মী যাচাই</h1><p class="note">ID: <b>'+esc(code)+'</b></p>'+(p?(p.active?'<div class="ok"><b>✔ যাচাই সফল</b><br>'+esc(p.full_name)+' — '+esc(ROLEN[p.role]||p.role)+'<br>'+(p.role==='social_media_manager'?'Freelance':p.employment_type==='part_time'?'Part-Time':'Full-Time')+' · '+p.since+ ' সাল থেকে</div>':'<div class="err"><b>✖ এই ব্যক্তি এখন Trishna-র সক্রিয় কর্মী নন।</b> কোনো লেনদেন করবেন না।</div>'):'<div class="err"><b>✖ ID পাওয়া যায়নি।</b> সন্দেহ হলে ফোন করুন।</div>')
+   +'<p class="note">সন্দেহ হলে: 📞 +91 98627 68900 / +91 60091 15490। আমাদের কর্মী কখনো অগ্রিম নগদ বা OTP চাইবেন না।</p></div>'+ad();});}
+
+/* ---- sign in / sign up ---- */
+function auth(mode,msg){var up=mode==='up',kind=window._kind||'customer';
+  $('#app').innerHTML='<video src="../media/logo-animation.mp4" poster="../media/logo-poster.jpg" autoplay muted loop playsinline></video>'+head()+'<div class="tabs"><button data-m="in" class="'+(up?'':'on')+'">লগইন</button><button data-m="up" class="'+(up?'on':'')+'">নতুন নিবন্ধন</button></div><div class="card"><form id="f"><h1>'+(up?'নতুন নিবন্ধন':'লগইন')+'</h1>'
+   +'<label>ইমেইল *</label><input id="em" type="email" required autocomplete="email"><label>পাসওয়ার্ড * (৮+ অক্ষর)</label><input id="pw" type="password" minlength="8" required autocomplete="'+(up?'new-password':'current-password')+'">'
+   +(up?'<label>আপনি কী চান?</label><select id="kd"><option value="customer"'+(kind==='customer'?' selected':'')+'>☀ সোলার পরামর্শ / গ্রাহক হতে চাই</option><option value="partner"'+(kind==='partner'?' selected':'')+'>🎁 শুধু Refer &amp; Earn পার্টনার হতে চাই</option></select>'
+     +'<label>পূর্ণ নাম *</label><input id="nm" required maxlength="80"><div class="row"><div><label>মোবাইল *</label><input id="ph" inputmode="tel" required maxlength="20"></div><div id="dw"><label>জেলা</label><input id="di" maxlength="60" placeholder="South Tripura"></div></div>'
+     +'<div id="cx"><label>ঠিকানা</label><input id="ad" maxlength="300"><div class="row"><div><label>পিন</label><input id="pn" maxlength="10"></div><div><label>মাসিক বিদ্যুৎ বিল ₹</label><input id="bl" type="number" min="0"></div></div><div class="row"><div><label>আগ্রহ</label><select id="it"><option value="unsure">এখনো ঠিক নয়</option><option value="on_grid">On-Grid</option><option value="hybrid">Hybrid</option><option value="off_grid">Off-Grid</option></select></div><div><label>ব্যবহার</label><select id="us"><option value="personal">ব্যক্তিগত</option><option value="commercial">ব্যবসায়িক</option></select></div></div></div>'
+     +'<div id="px" style="display:none"><label>UPI ID (রিওয়ার্ড পাওয়ার জন্য)</label><input id="up" maxlength="80" placeholder="name@upi"></div>'
+     +'<label>রেফারেল কোড (থাকলে)</label><input id="rf" maxlength="12" value="'+esc(Q.get('ref')||'')+'" placeholder="TPSR-XXXXXX">'
+     +'<label class="chk"><input type="checkbox" id="cs" required><span>আমি সম্মত যে Trishna Power Solution আমার নাম, ফোন, ঠিকানা ও সংশ্লিষ্ট তথ্য সোলার পরামর্শ, কোটেশন ও Refer &amp; Earn-এর জন্য সংরক্ষণ করবে। গ্রাহক নিবন্ধন অনুমোদন না হলে ৩০ দিন পর তথ্য মুছে যাবে; চাইলে যেকোনো সময় আমি নিজে মুছতে পারব।</span></label>':'')
+   +(msg?'<div class="'+(msg[0]==='!'?'err':'ok')+'">'+esc(msg.slice(1))+'</div>':'')+'<button class="btn" type="submit">'+(up?'নিবন্ধন করুন':'লগইন')+'</button></form></div>'+ad();
+  [].forEach.call(document.querySelectorAll('.tabs button'),function(b){b.onclick=function(){auth(b.dataset.m);};});
+  function sw(){if(!up)return;var pt=$('#kd').value==='partner';window._kind=$('#kd').value;$('#cx').style.display=pt?'none':'block';$('#px').style.display=pt?'block':'none';$('#dw').style.display=pt?'none':'block';}
+  if(up){$('#kd').onchange=sw;sw();}
+  $('#f').onsubmit=function(e){e.preventDefault();var em=$('#em').value.trim(),pw=$('#pw').value;
+    if(!up){sb.auth.signInWithPassword({email:em,password:pw}).then(function(r){r.error?auth('in','!ইমেইল বা পাসওয়ার্ড ভুল।'):home();});return;}
+    var pt=$('#kd').value==='partner';
+    sb.auth.signUp({email:em,password:pw}).then(function(r){
+      if(r.error){auth('up','!'+r.error.message);return;}
+      var go=function(){return pt?sb.rpc('referrer_join',{p_name:$('#nm').value,p_phone:$('#ph').value,p_upi:$('#up').value,p_consent:$('#cs').checked}):sb.rpc('customer_signup',{p_name:$('#nm').value,p_phone:$('#ph').value,p_address:$('#ad').value,p_district:$('#di').value,p_pincode:$('#pn').value,p_monthly_bill:$('#bl').value||null,p_interest:$('#it').value,p_use:$('#us').value,p_consent:$('#cs').checked,p_ref:$('#rf').value||null});};
+      var fin=function(){return go().then(function(x){if(x.error){$('#app').innerHTML=head()+'<div class="card"><div class="err">'+esc(x.error.message)+'</div><button class="btn alt" onclick="out()">ফিরে যান</button></div>';return;}tab=pt?'refer':'me';home();});};
+      if(!r.data.session){return sb.auth.signInWithPassword({email:em,password:pw}).then(function(x){if(x.error){auth('in','!ইমেইল নিশ্চিত করে লগইন করুন।');return;}return fin();});}
+      return fin();});};
+}
+function out(){sb.auth.signOut().then(function(){C=R=null;auth('in');});}
+
+/* ---- home ---- */
+function home(){Promise.all([sb.from('customers').select('*').maybeSingle(),sb.from('referrers').select('*').maybeSingle()]).then(function(r){C=r[0].data;R=r[1].data;
+  if(!C&&!R){$('#app').innerHTML=head()+'<div class="card"><h1>প্রোফাইল পাওয়া যায়নি</h1><p class="note">এটি কর্মী অ্যাকাউন্ট হতে পারে—কর্মীরা Staff Portal ব্যবহার করুন। অথবা নতুন নিবন্ধন করুন।</p><button class="btn alt" onclick="out()">লগআউট</button></div>';return;}
+  var T=[['me','👤 আমার প্রজেক্ট'],['refer','🎁 Refer & Earn'],['learn','📚 শিখুন'],['exams','🎓 পরীক্ষা'],['well','🌿 সুস্থ জীবন'],['help','🛠 সাহায্য'],['terms','📜 শর্তাবলি']];
+  $('#app').innerHTML=head()+'<div class="tabs" id="tb">'+T.map(function(t){return '<button data-t="'+t[0]+'">'+t[1]+'</button>';}).join('')+'</div><div id="v"></div>'+ad()+'<p class="note" style="text-align:center"><a href="#" onclick="out();return false">লগআউট</a></p>';
+  $('#tb').onclick=function(e){var b=e.target.closest('button');if(b)show(b.dataset.t);};show(tab);});}
+function show(t){tab=t;[].forEach.call(document.querySelectorAll('#tb button'),function(b){b.classList.toggle('on',b.dataset.t===t);});var f=V[t];if(f)f();}
+var V={};
+V.me=function(){var c=C;
+  if(!c){$('#v').innerHTML='<div class="card"><h1>আপনি Refer &amp; Earn পার্টনার</h1><p class="note">নিজের বাড়ি/দোকানে সোলার নিয়ে জানতে চান? প্রোফাইল তৈরি করুন—আমাদের টিম যোগাযোগ করবে।</p><form id="sf"><label>ঠিকানা</label><input id="a1" maxlength="300"><div class="row"><div><label>জেলা</label><input id="a2" value="South Tripura"></div><div><label>মাসিক বিল ₹</label><input id="a3" type="number"></div></div><label class="chk"><input type="checkbox" id="a4" required><span>আমি সম্মত—আমার তথ্য সোলার পরামর্শের জন্য সংরক্ষিত হবে (অনুমোদন না হলে ৩০ দিনে মুছে যাবে)।</span></label><button class="btn">প্রোফাইল তৈরি করুন</button><div id="m"></div></form></div>';
+    $('#sf').onsubmit=function(e){e.preventDefault();sb.rpc('customer_signup',{p_name:R.name,p_phone:R.phone,p_address:$('#a1').value,p_district:$('#a2').value,p_pincode:'',p_monthly_bill:$('#a3').value||null,p_interest:'unsure',p_use:'personal',p_consent:$('#a4').checked,p_ref:null}).then(function(x){x.error?$('#m').innerHTML='<div class="err">'+esc(x.error.message)+'</div>':home();});};return;}
+  var left=c.expires_at?Math.max(0,Math.ceil((new Date(c.expires_at)-Date.now())/864e5)):0;
+  var st=c.approval_status==='approved'?'<span class="pill g">অনুমোদিত ✔</span>':c.approval_status==='rejected'?'<span class="pill r">বাতিল</span>':'<span class="pill y">অনুমোদনের অপেক্ষায়</span>';
+  var idx=STG.map(function(x){return x[0];}).indexOf(c.stage);
+  $('#v').innerHTML='<div class="card"><h1>স্বাগতম, '+esc(c.name)+'</h1><p>স্ট্যাটাস: '+st+'</p>'
+   +(c.approval_status==='pending'?'<p class="note">আমাদের টিম আপনার তথ্য যাচাই করে অনুমোদন দেবে। <b>'+left+' দিনের</b> মধ্যে অনুমোদন না হলে সব তথ্য স্বয়ংক্রিয়ভাবে মুছে যাবে। দ্রুত অনুমোদনের জন্য <a href="https://wa.me/'+CFG.wa+'">WhatsApp করুন</a>।</p>':'')
+   +(c.approval_status==='rejected'?'<p class="note">কারণ: '+esc(c.reject_reason||'—')+'. '+left+' দিন পর তথ্য মুছে যাবে।</p>':'')
+   +(c.approval_status==='approved'?'<h4>আপনার প্রজেক্টের অগ্রগতি</h4><div class="steps">'+STG.map(function(x,i){return '<div class="'+(i<=idx?'d':'')+'"><i>'+(i<=idx?'✓':i+1)+'</i>'+x[1]+'</div>';}).join('')+'</div>'+(c.system_kw?'<p class="note">সিস্টেম: <b>'+esc(c.system_kw)+' kW</b></p>':''):'')+'</div>'
+   +'<div class="card"><h3>আপনার তথ্য</h3><form id="ef"><label>নাম</label><input id="n" value="'+esc(c.name)+'"><div class="row"><div><label>ফোন</label><input id="p" value="'+esc(c.phone||'')+'"></div><div><label>পিন</label><input id="z" value="'+esc(c.pincode||'')+'"></div></div><label>ঠিকানা</label><input id="a" value="'+esc(c.address||'')+'"><label>মাসিক বিল ₹</label><input id="b" type="number" value="'+esc(c.monthly_bill||'')+'"><button class="btn">তথ্য আপডেট</button><div id="m"></div></form></div>'
+   +'<div class="card"><h3>আমার তথ্য মুছুন</h3><p class="note">চাইলে যেকোনো সময় আপনার প্রোফাইল, Refer &amp; Earn তথ্য ও লগইন স্থায়ীভাবে মুছে ফেলতে পারেন।</p><button class="btn red" id="del">আমার সব তথ্য মুছে ফেলুন</button></div>';
+  $('#ef').onsubmit=function(e){e.preventDefault();sb.from('customers').update({name:$('#n').value,phone:$('#p').value,pincode:$('#z').value,address:$('#a').value,monthly_bill:$('#b').value||null}).eq('id',c.id).then(function(x){$('#m').innerHTML=x.error?'<div class="err">'+esc(x.error.message)+'</div>':'<div class="ok">সেভ হয়েছে ✔</div>';});};
+  $('#del').onclick=del;};
+function del(){if(confirm('সব তথ্য স্থায়ীভাবে মুছে যাবে। নিশ্চিত?'))sb.rpc('customer_delete_me').then(function(x){if(x.error)alert(x.error.message);else sb.auth.signOut().then(function(){auth('in','ঠিক আছে: আপনার তথ্য মুছে ফেলা হয়েছে।');});});}
+
+/* ===== TPSX: exams + certificates + trust score (shared by staff & customer portals) ===== */
+window.TPSX=(function(){
+  var css='.xq{border:1px solid #d8e6dc;border-radius:12px;padding:12px;margin:10px 0;background:#fff}.xq b{display:block;margin-bottom:6px}.xq label{display:block;padding:7px 10px;border:1px solid #e2ebe5;border-radius:9px;margin:5px 0;cursor:pointer}.xq label:hover{background:#f3faf6}.xq input{margin-right:8px}'
+   +'.xov{position:fixed;inset:0;background:#0009;z-index:9999;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:14px}.xbox{background:#f7fbf8;max-width:720px;width:100%;border-radius:16px;padding:16px;margin:auto;color:#10243a;font-family:system-ui,"Noto Sans Bengali",sans-serif}'
+   +'.xtop{position:sticky;top:0;background:#f7fbf8;padding:6px 0;display:flex;justify-content:space-between;align-items:center;z-index:2;border-bottom:1px solid #d8e6dc}.xtm{font-weight:700;color:#b45309}'
+   +'.xex{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1px solid #d8e6dc;border-radius:12px;padding:10px 12px;margin:8px 0;background:#fff}.xex>div{flex:1;min-width:200px}.xex small{color:#567}'
+   +'.xtr{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}.xring{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:26px;color:#0f6b3f;background:conic-gradient(#0f6b3f calc(var(--p)*1%),#dfeae3 0)}.xring span{background:#fff;width:72px;height:72px;border-radius:50%;display:grid;place-items:center}'
+   +'.xbar{height:8px;background:#e2ebe5;border-radius:9px;overflow:hidden;margin:3px 0 8px}.xbar i{display:block;height:100%;background:linear-gradient(90deg,#f59e0b,#0f6b3f)}'
+   +'.xlv{display:inline-block;padding:2px 12px;border-radius:99px;background:#0f6b3f;color:#fff;font-size:12px;font-weight:700}.xok{color:#0f6b3f}.xno{color:#b91c1c}.xpill{display:inline-block;padding:1px 9px;border-radius:99px;background:#e8f3ec;font-size:11px;margin-left:4px}';
+  function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function ensureCss(){if(!document.getElementById('xcss')){var s=document.createElement('style');s.id='xcss';s.textContent=css;document.head.appendChild(s);}}
+  function needQr(cb){if(window.qrcode){cb();return;}var d=0,f=function(){if(!d){d=1;cb();}};var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js';s.onload=f;s.onerror=f;document.head.appendChild(s);setTimeout(f,3000);}
+  function qr(t){try{var q=qrcode(0,'M');q.addData(t);q.make();return q.createSvgTag({cellSize:3,margin:0});}catch(e){return '<small>'+esc(t.split('=').pop())+'</small>';}}
+  function ist(d){return new Date(d).toLocaleDateString('en-IN',{timeZone:'Asia/Kolkata',day:'2-digit',month:'long',year:'numeric'});}
+  function certHtml(c,o){var url=o.verify+encodeURIComponent(c.code);
+    return '<div class="cert"><div class="in"><img class="lg" src="'+esc(o.logo)+'" alt=""><div class="t1">CERTIFICATE OF ACHIEVEMENT</div><div class="t2">এই সার্টিফিকেট প্রদান করা হলো</div><div class="nm">'+esc(c.holder_name||c.name)+'</div><div class="t2">সফলভাবে পরীক্ষায় উত্তীর্ণ হওয়ার জন্য</div><div class="ti">'+esc(c.cert_title||c.title||c.exam_title)+'</div><div class="t2">প্রাপ্ত নম্বর: <b>'+esc(c.score_pct!=null?c.score_pct:c.score)+'%</b> · তারিখ: '+ist(c.issued_at||c.issued)+'</div>'
+     +'<div class="ft"><div class="sg"><div class="ln"></div>M.D., Trishna Power Solution</div><div class="qq">'+qr(url)+'<small>যাচাই কোড: <b>'+esc(c.code)+'</b></small></div></div><div class="sm">Trishna Power Solution · Belonia, South Tripura · যাচাই করুন: '+esc(o.verify.replace(/\?.*$/,''))+'</div></div></div>';}
+  var ccss='@page{size:A4 landscape;margin:0}body{margin:0;font-family:system-ui,"Noto Sans Bengali",Arial,sans-serif;color:#10243a}.cert{width:297mm;height:209mm;padding:10mm;box-sizing:border-box;background:#fff}.in{height:100%;border:6px double #0f6b3f;border-radius:10px;text-align:center;padding:8mm 14mm;box-sizing:border-box;position:relative;background:linear-gradient(180deg,#f3faf6,#fff 40%)}.lg{height:74px}.t1{font-size:30px;letter-spacing:5px;color:#0f6b3f;font-weight:800;margin-top:6px}.t2{margin:10px 0;color:#456;font-size:16px}.nm{font-size:42px;font-weight:800;margin:6px 0;border-bottom:2px solid #b8860b;display:inline-block;padding:0 30px}.ti{font-size:26px;color:#b8860b;font-weight:700;margin:6px 0}.ft{position:absolute;left:14mm;right:14mm;bottom:16mm;display:flex;justify-content:space-between;align-items:flex-end}.sg{width:230px;font-size:13px}.ln{border-top:1px solid #234;margin-bottom:4px}.qq{text-align:center;font-size:11px}.qq svg{width:86px;height:86px;display:block;margin:0 auto 3px}.sm{position:absolute;left:0;right:0;bottom:5mm;font-size:10px;color:#678}';
+  function printCert(c,o){needQr(function(){var w=window.open('','_blank');if(!w){alert('পপ-আপ অনুমতি দিন');return;}w.document.write('<!doctype html><meta charset="utf-8"><title>Certificate '+esc(c.code)+'</title><style>'+ccss+'</style><body>'+certHtml(c,o)+'<script>setTimeout(function(){print()},700)<\/script>');w.document.close();});}
+  function trustHtml(t){if(!t)return '<p class="note">Trust Score পেতে আপনার প্রোফাইল অনুমোদিত হতে হবে।</p>';var m=t.max,pct=function(v,x){return Math.min(100,Math.round(100*v/x));};
+    var d=t.detail||{};var det=t.kind==='staff'?('সার্টিফিকেট '+d.certificates+' · স্টাডি '+d.study_done+'/'+d.study_total+' · সক্রিয় দিন (৩০) '+d.active_days_30+' · Valid Lead (১৮০ দিন) '+d.valid_leads_180d+' · ইনস্টল '+d.installs_12m+' · সম্পন্ন টাস্ক '+d.tasks_done_180d):('সার্টিফিকেট '+d.certificates+' · সদস্যতা '+d.member_months+' মাস · সম্পন্ন ইনস্টলেশন: '+(d.projects_installed?'হ্যাঁ':'না')+' · সফল রেফারেল '+d.referrals_installed);
+    return '<div class="xtr"><div class="xring" style="--p:'+t.total+'"><span>'+t.total+'</span></div><div><span class="xlv">'+esc(t.level)+'</span> <b>Trust Score / ১০০</b>'
+     +'<div style="font-size:12px;margin-top:6px">📚 জ্ঞান <b>'+t.knowledge+'/'+m.knowledge+'</b></div><div class="xbar"><i style="width:'+pct(t.knowledge,m.knowledge)+'%"></i></div>'
+     +'<div style="font-size:12px">⏳ সময় <b>'+t.time+'/'+m.time+'</b></div><div class="xbar"><i style="width:'+pct(t.time,m.time)+'%"></i></div>'
+     +'<div style="font-size:12px">🛠 কাজ/অবদান <b>'+t.work+'/'+m.work+'</b></div><div class="xbar"><i style="width:'+pct(t.work,m.work)+'%"></i></div></div></div><p class="note" style="margin-top:8px">'+det+'</p>';}
+  function run(sb,exam,o,done){
+    ensureCss();
+    sb.rpc('exam_start',{p_exam:exam.id}).then(function(r){
+      if(r.error){alert(r.error.message);return;}
+      var s=r.data,qs=s.questions.slice().sort(function(){return Math.random()-.5;}),end=Date.now()+s.duration_min*60000,ov=document.createElement('div'),ans={},submitted=false,timer;
+      ov.className='xov';
+      ov.innerHTML='<div class="xbox"><div class="xtop"><b>'+esc(s.title)+'</b><span class="xtm" id="xtm"></span></div><p style="font-size:13px;color:#567">পাস মার্ক '+s.pass_percent+'% · সময় '+s.duration_min+' মিনিট · সব প্রশ্নের উত্তর দিন। পেজ বন্ধ করলে চেষ্টা গণনা হবে।</p><div id="xqs">'+qs.map(function(q,i){return '<div class="xq"><b>'+(i+1)+'. '+esc(q.q)+'</b>'+q.options.map(function(op,k){return '<label><input type="radio" name="q'+q.id+'" value="'+k+'">'+esc(op)+'</label>';}).join('')+'</div>';}).join('')+'</div><button class="btn" id="xsub">জমা দিন</button> <button class="btn alt" id="xcan">বাতিল</button><div id="xres"></div></div>';
+      document.body.appendChild(ov);
+      function tick(){var left=Math.max(0,Math.round((end-Date.now())/1000));ov.querySelector('#xtm').textContent='⏱ '+Math.floor(left/60)+':'+String(left%60).padStart(2,'0');if(left<=0&&!submitted)submit();}
+      timer=setInterval(tick,1000);tick();
+      ov.addEventListener('change',function(e){if(e.target.name&&e.target.name.charAt(0)==='q')ans[e.target.name.slice(1)]=+e.target.value;});
+      ov.querySelector('#xcan').onclick=function(){if(confirm('পরীক্ষা বাতিল করবেন? এই চেষ্টা গণনা হবে।')){clearInterval(timer);ov.remove();done&&done();}};
+      function submit(){if(submitted)return;submitted=true;clearInterval(timer);ov.querySelector('#xsub').disabled=true;
+        sb.rpc('exam_submit',{p_attempt:s.attempt_id,p_answers:ans}).then(function(x){
+          if(x.error){alert(x.error.message);submitted=false;return;}
+          var res=x.data,h='<hr><h2 class="'+(res.passed?'xok':'xno')+'">'+(res.passed?'🎉 অভিনন্দন! উত্তীর্ণ':'এবার উত্তীর্ণ হননি')+' — '+res.score+'% ('+res.correct+'/'+res.total+')</h2>'+(res.late?'<p class="xno">সময় শেষের পরে জমা—ফলাফল গণনা হয়নি।</p>':'');
+          if(res.certificate){h+='<p>✅ সার্টিফিকেট তৈরি: <b>'+esc(res.certificate.code)+'</b></p><button class="btn" id="xpc">🖨 সার্টিফিকেট দেখুন / প্রিন্ট</button> ';}
+          else if(!res.passed)h+='<p>পাস মার্ক '+res.pass_percent+'%। নিচের ব্যাখ্যা পড়ে আবার চেষ্টা করুন।</p>';
+          h+='<h3>উত্তর ও ব্যাখ্যা</h3>'+res.review.map(function(q,i){var ok=q.chosen===q.correct;return '<div class="xq"><b>'+(i+1)+'. '+esc(q.q)+' <span class="'+(ok?'xok':'xno')+'">'+(ok?'✔':'✘')+'</span></b>উত্তর: <b>'+esc(q.options[q.correct])+'</b>'+(ok?'':'<br><small>আপনার উত্তর: '+(q.chosen==null?'—':esc(q.options[q.chosen]))+'</small>')+(q.explanation?'<br><small>'+esc(q.explanation)+'</small>':'')+'</div>';}).join('')+'<button class="btn alt" id="xcl">বন্ধ করুন</button>';
+          ov.querySelector('#xqs').style.display='none';ov.querySelector('#xsub').style.display='none';ov.querySelector('#xcan').style.display='none';ov.querySelector('#xres').innerHTML=h;ov.scrollTop=0;
+          var pc=ov.querySelector('#xpc');if(pc)pc.onclick=function(){printCert(res.certificate,o);};
+          ov.querySelector('#xcl').onclick=function(){ov.remove();done&&done();};});}
+      ov.querySelector('#xsub').onclick=function(){var miss=qs.filter(function(q){return ans[q.id]==null;}).length;if(miss&&!confirm(miss+'টি প্রশ্নের উত্তর দেননি। তবুও জমা দেবেন?'))return;submit();};
+    });}
+  async function render(box,o){ensureCss();box.innerHTML='<p class="note">লোড হচ্ছে…</p>';
+    var sb=o.sb,uid=(await sb.auth.getSession()).data.session.user.id;
+    var R=await Promise.all([sb.from('exams').select('*').eq('published',true).order('sort'),sb.from('exam_attempts').select('exam_id,score_pct,passed,submitted_at').eq('user_id',uid).not('submitted_at','is',null),sb.from('certificates').select('*').eq('user_id',uid).eq('revoked',false).order('issued_at',{ascending:false}),sb.rpc('my_trust')]);
+    var exams=(R[0].data||[]).filter(function(e){return o.filter?o.filter(e):true;}),att=R[1].data||[],certs=R[2].data||[],best={},cm={};
+    att.forEach(function(a){if(best[a.exam_id]==null||a.score_pct>best[a.exam_id])best[a.exam_id]=a.score_pct;});certs.forEach(function(c){cm[c.exam_id]=c;});
+    box.innerHTML='<div class="card"><h3>🏅 আপনার Trust Score</h3>'+trustHtml(R[3].data)+'<p class="note">জ্ঞান (পরীক্ষা/স্টাডি) + সময় (সদস্যতা/নিয়মিততা) + কাজ (অবদান) মিলিয়ে হিসাব। পরীক্ষা পাস করলে সার্টিফিকেট ও স্কোর বাড়ে।</p></div>'
+     +'<div class="card"><h3>🎓 পরীক্ষা</h3>'+(exams.map(function(e){var c=cm[e.id];return '<div class="xex"><div><b>'+esc(e.title)+'</b>'+(e.role?'<span class="xpill">শুধু এই পদের জন্য</span>':'')+'<br><small>'+esc(e.description||'')+'</small><br><small>পাস '+e.pass_percent+'% · '+e.duration_min+' মিনিট'+(best[e.id]!=null?' · সেরা: <b>'+best[e.id]+'%</b>':'')+'</small></div>'+(c?'<span class="xok"><b>✔ সার্টিফিকেট</b></span> <button class="btn alt sm" data-pc="'+c.id+'">🖨 দেখুন</button> ':'')+'<button class="btn sm" data-ex="'+e.id+'">'+(c?'আবার দিন':'পরীক্ষা শুরু')+'</button></div>';}).join('')||'<p class="note">এখনো কোনো পরীক্ষা নেই।</p>')+'</div>'
+     +'<div class="card"><h3>📜 আমার সার্টিফিকেট</h3>'+(certs.map(function(c){return '<div class="xex"><div><b>'+esc(c.cert_title||c.exam_title)+'</b><br><small>কোড: '+esc(c.code)+' · '+c.score_pct+'% · '+ist(c.issued_at)+'</small></div><button class="btn alt sm" data-pc="'+c.id+'">🖨 প্রিন্ট</button></div>';}).join('')||'<p class="note">পরীক্ষা পাস করলে এখানে সার্টিফিকেট জমা হবে।</p>')+'</div>';
+    box.onclick=function(e){var b;if(b=e.target.closest('[data-ex]')){var ex=exams.filter(function(x){return String(x.id)===b.dataset.ex;})[0];if(confirm('“'+ex.title+'” পরীক্ষা শুরু করবেন? সময় '+ex.duration_min+' মিনিট।'))run(sb,ex,o,function(){render(box,o);});}
+      if(b=e.target.closest('[data-pc]')){var c=certs.filter(function(x){return String(x.id)===b.dataset.pc;})[0];printCert(c,o);}};}
+  return {render:render,printCert:printCert,trustHtml:trustHtml,esc:esc,ensureCss:ensureCss,certHtml:certHtml,needQr:needQr};
+})();
+
+
+/* ---- certificate verification page (?cert=CODE) ---- */
+function certVerify(code){sb.rpc('verify_certificate',{p_code:code}).then(function(r){var c=r.data||{};
+  var ok=c.valid;$('#app').innerHTML=head()+'<div class="card"><h1>🎓 সার্টিফিকেট যাচাই</h1><p class="note">কোড: <b>'+esc(code)+'</b></p>'
+   +(ok?'<div class="ok"><b>✔ বৈধ সার্টিফিকেট</b><br>'+esc(c.name)+' ('+(c.kind==='staff'?'কর্মী':'গ্রাহক')+')<br><b>'+esc(c.title)+'</b><br>স্কোর: '+esc(c.score)+'% · ইস্যু: '+new Date(c.issued).toLocaleDateString('en-IN',{day:'2-digit',month:'long',year:'numeric'})+'</div>'
+      :(c.name?'<div class="err"><b>✖ এই সার্টিফিকেট বাতিল করা হয়েছে।</b></div>':'<div class="err"><b>✖ এই কোডে কোনো সার্টিফিকেট পাওয়া যায়নি।</b> কোডটি আবার দেখে নিন।</div>'))
+   +'<p class="note">অন্য কোড যাচাই করুন:</p><form id="cvf"><input id="cvc" placeholder="TPSC-XXXXXXXX"><button class="btn">যাচাই করুন</button></form><p class="note">সন্দেহ হলে: 📞 +91 98627 68900 / 60091 15490।</p></div>'+ad();
+  $('#cvf').onsubmit=function(e){e.preventDefault();var v=$('#cvc').value.trim();if(v)certVerify(v);};});}
+/* ---- exams / certificates / trust score (customers) ---- */
+
+V.well=function(){TPSW.css();var v=$('#v');v.innerHTML='<div class="wl-c" style="background:linear-gradient(135deg,#fff7ed,#ecfdf5)"><h3>🌿 সুস্থ ঘর, সুখী পরিবার</h3><p style="font-size:17px;font-weight:700;margin:4px 0">'+esc(TPSW.thought())+'</p><p class="wl-n">আমরা শুধু সোলার বসাই না—আপনার ও পরিবারের সুস্থ, শান্ত জীবনও চাই। বিদ্যুৎ বিল কমলে সেই সময় ও টাকা পরিবারের জন্য রাখুন।</p></div><div id="w_br"></div><div id="w_tm"></div>'+TPSW.routines()+TPSW.psych()+'<div class="wl-c"><h3>☀️ সৌর জীবনযাত্রা</h3><p class="wl-n">সকালের নরম রোদে ১৫-২০ মিনিট হাঁটুন (দুপুরের কড়া রোদ এড়িয়ে) · রাতে ঘুমের ১ ঘণ্টা আগে মোবাইল-টিভি কমান · পরিবারের সঙ্গে একসাথে খাবার · আপনার প্রতি kW সোলার বছরে প্রায় ১ টনের বেশি কার্বন কমাতে সাহায্য করে।</p></div>';TPSW.breath($('#w_br',v));TPSW.timer($('#w_tm',v));};
+V.exams=function(){if(!C||C.approval_status!=='approved'){$('#v').innerHTML='<div class="card"><h3>🎓 পরীক্ষা ও সার্টিফিকেট</h3><p class="note">আপনার প্রোফাইল অনুমোদিত হলে এখানে পরীক্ষা দিয়ে সার্টিফিকেট ও Trust Score পাবেন।</p></div>';return;}
+  TPSX.render($('#v'),{sb:sb,logo:new URL('../media/logo-main.png',location.href).href,verify:CFG.base+'?cert=',filter:function(e){return e.audience==='customer'||e.audience==='all';}});};
+function nboard(items){if(!items.length)return '';var K={notice:'📢',banner:'📢',ad:'🎯',story:'🌟',motivation:'💡'};
+  return '<div id="nboard">'+items.slice(0,4).map(function(x){return '<div class="card" style="'+(x.pinned?'border-left:5px solid #d97706':'')+'">'+(x.image_url?'<img src="'+esc(x.image_url)+'" alt="" style="max-width:100%;max-height:200px;border-radius:10px;display:block;margin-bottom:6px">':'')+'<b>'+(K[x.kind]||'')+' '+esc(x.title)+'</b>'+(x.body?'<div style="white-space:pre-wrap;margin-top:4px">'+esc(x.body)+'</div>':'')+(x.author_name?'<small>— '+esc(x.author_name)+'</small>':'')+(x.link_url&&/^https?:/.test(x.link_url)?'<div><a class="btn alt sm" style="display:inline-block;margin-top:6px;text-decoration:none" target="_blank" rel="noopener" href="'+esc(x.link_url)+'">'+esc(x.link_label||'আরও জানুন')+'</a></div>':'')+'</div>';}).join('')+'</div>';}
+var _vme=V.me;V.me=function(){_vme();sb.from('content_items').select('*').eq('published',true).in('audience',['public','customer']).order('pinned',{ascending:false}).order('sort').order('created_at',{ascending:false}).limit(8).then(function(r){var h=nboard(r.data||[]),v=$('#v');if(h&&v&&!$('#nboard'))v.insertAdjacentHTML('afterbegin',h);});};
+
+/* ---- Refer & Earn ---- */
+V.refer=function(){
+  if(!R){$('#v').innerHTML='<div class="card"><h1>🎁 Refer &amp; Earn-এ যোগ দিন</h1><p class="note">পরিচিতদের সোলারের কথা জানান। আপনার একটি <b>ইউনিক ID</b> তৈরি হবে। আপনার রেফার করা ব্যক্তির ইনস্টলেশন সম্পন্ন হলে কোম্পানি-নির্ধারিত রিওয়ার্ড পাবেন (পরিমাণ ও শর্ত “শর্তাবলি” ট্যাবে)।</p><form id="jf"><label>নাম *</label><input id="j1" required value="'+esc(C?C.name:'')+'"><div class="row"><div><label>মোবাইল *</label><input id="j2" required value="'+esc(C&&C.phone||'')+'"></div><div><label>UPI ID</label><input id="j3" placeholder="name@upi"></div></div><label class="chk"><input type="checkbox" id="j4" required><span>আমি Refer &amp; Earn শর্তাবলিতে সম্মত এবং যাদের তথ্য দেব তাদের অনুমতি নিয়েছি।</span></label><button class="btn">যোগ দিন ও ID নিন</button><div id="m"></div></form></div>';
+    $('#jf').onsubmit=function(e){e.preventDefault();sb.rpc('referrer_join',{p_name:$('#j1').value,p_phone:$('#j2').value,p_upi:$('#j3').value,p_consent:$('#j4').checked}).then(function(x){x.error?$('#m').innerHTML='<div class="err">'+esc(x.error.message)+'</div>':home();});};return;}
+  sb.from('referrals').select('*').order('created_at',{ascending:false}).then(function(r){var rows=r.data||[];var link=CFG.base+'?ref='+R.code;
+    var earned=rows.filter(function(x){return x.reward_status==='paid';}).reduce(function(a,x){return a+Number(x.reward);},0),due=rows.filter(function(x){return x.reward_status==='approved';}).reduce(function(a,x){return a+Number(x.reward);},0);
+    $('#v').innerHTML='<div class="card"><h3>🎁 আপনার Refer &amp; Earn ID</h3><div class="code">'+esc(R.code)+'</div><div class="pc"><b>TRISHNA POWER SOLUTION</b> · Refer &amp; Earn Partner<br>'+esc(R.name)+' · ID: <b>'+esc(R.code)+'</b><br><small>সোলারে বিদ্যুৎ বিল কমান • 📞 98627 68900 / 60091 15490</small></div>'
+     +'<div class="row" style="margin-top:10px"><a class="btn wa" style="text-align:center;text-decoration:none;display:block" target="_blank" href="https://wa.me/?text='+encodeURIComponent('☀ সোলার লাগিয়ে বিদ্যুৎ বিল কমান! Trishna Power Solution-এ আমার রেফারেল কোড '+R.code+' ব্যবহার করুন: '+link)+'">WhatsApp-এ শেয়ার</a><button class="btn alt" id="cp">লিংক কপি</button><button class="btn alt" id="pcd">🖨 পার্টনার কার্ড প্রিন্ট</button></div><p class="note">নতুন কেউ এই লিংক দিয়ে নিবন্ধন করলে অনুমোদনের পর স্বয়ংক্রিয়ভাবে আপনার রেফারেল হিসেবে যোগ হবে।</p></div>'
+     +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px"><div class="card" style="margin:0;text-align:center"><b style="font-size:22px">'+rows.length+'</b><br><small>রেফারেল</small></div><div class="card" style="margin:0;text-align:center"><b style="font-size:22px">'+inr(due)+'</b><br><small>পাওনা</small></div><div class="card" style="margin:0;text-align:center"><b style="font-size:22px">'+inr(earned)+'</b><br><small>পেয়েছেন</small></div></div>'
+     +'<div class="card"><h3>নতুন ব্যক্তিকে রেফার করুন</h3><form id="rf2"><div class="row"><div><label>নাম *</label><input id="r1" required maxlength="80"></div><div><label>মোবাইল *</label><input id="r2" inputmode="tel" required maxlength="15"></div></div><div class="row"><div><label>এলাকা</label><input id="r3" maxlength="120"></div><div><label>মাসিক বিল ₹ (আনুমানিক)</label><input id="r4" type="number"></div></div><label>নোট</label><input id="r5" maxlength="300" placeholder="কখন ফোন করা ভালো ইত্যাদি"><button class="btn">রেফারেল জমা দিন</button><div id="m"></div></form></div>'
+     +'<div class="card"><h3>আপনার রেফারেল তালিকা</h3>'+(rows.map(function(x){return '<div class="item"><b>'+esc(x.name)+'</b> · '+esc(x.phone)+' <span class="pill '+(x.status==='installed'?'g':x.status==='rejected'?'r':'y')+'">'+RS[x.status]+'</span>'+(x.reward>0?' <span class="pill b">'+inr(x.reward)+' '+RW[x.reward_status]+'</span>':'')+'</div>';}).join('')||'<p class="note">এখনো কাউকে রেফার করেননি।</p>')+'</div>';
+    $('#pcd').onclick=function(){var go=function(){var q='';try{var t=qrcode(0,'M');t.addData(link);t.make();q=t.createSvgTag({cellSize:3,margin:0});}catch(e){q='<small>'+esc(R.code)+'</small>';}var w=window.open('','_blank');if(!w){alert('পপ-আপ অনুমতি দিন');return;}var one='<div class="cd"><div class="t"><b>TRISHNA POWER SOLUTION</b><br>Refer &amp; Earn Partner<br>'+esc(R.name)+'<br>ID: <b>'+esc(R.code)+'</b><br>সোলারে বিদ্যুৎ বিল কমান<br>📞 98627 68900 / 60091 15490</div><div class="q">'+q+'</div></div>';w.document.write('<!doctype html><meta charset="utf-8"><title>Partner card</title><style>body{margin:8mm;font-family:Arial,sans-serif}.cd{width:90mm;height:52mm;border:1px dashed #889;display:inline-flex;align-items:center;gap:4mm;padding:4mm;margin:2mm;vertical-align:top}.t{font-size:11px;line-height:1.5}.t b{color:#0f6b3f}.q svg{width:26mm;height:26mm}</style><body>'+one+one+'<script>setTimeout(function(){print()},500)<\/script>');w.document.close();};if(window.qrcode)go();else{var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js';s.onload=go;s.onerror=go;document.head.appendChild(s);}};
+    $('#cp').onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(link);this.textContent='কপি হয়েছে ✔';};
+    $('#rf2').onsubmit=function(e){e.preventDefault();sb.rpc('add_referral',{p_name:$('#r1').value,p_phone:$('#r2').value,p_area:$('#r3').value,p_bill:$('#r4').value||null,p_note:$('#r5').value}).then(function(x){if(x.error)$('#m').innerHTML='<div class="err">'+esc(x.error.message)+'</div>';else V.refer();});};});};
+
+/* ---- learn / help / terms ---- */
+V.learn=function(){sb.from('cms_pages').select('title,body,kind').in('kind',['guide','faq']).order('sort').then(function(r){$('#v').innerHTML='<div class="card"><h3>📚 সোলার সম্পর্কে শিখুন</h3><p class="note">সহজ ভাষায় গাইড—সোলার কীভাবে কাজ করে, ভর্তুকি, ইনস্টলেশন, রক্ষণাবেক্ষণ ও নিরাপত্তা।</p>'+((r.data||[]).map(function(x){return '<details><summary><b>'+esc(x.title)+'</b></summary>'+rich(x.body)+'</details>';}).join('')||'<p class="note">শীঘ্রই আসছে।</p>')+'</div>';});};
+V.help=function(){if(!C){$('#v').innerHTML='<div class="card"><p class="note">সাহায্যের অনুরোধ পাঠাতে আগে সোলার প্রোফাইল তৈরি করুন ("আমার প্রজেক্ট" ট্যাব)।</p></div>';return;}
+  sb.from('service_requests').select('*').order('created_at',{ascending:false}).then(function(r){var K={question:'প্রশ্ন',service:'সার্ভিস',complaint:'অভিযোগ',cleaning:'প্যানেল ক্লিনিং',other:'অন্যান্য'},S={open:'নতুন',in_progress:'চলছে',done:'সমাধান'};
+    $('#v').innerHTML='<div class="card"><h3>🛠 সাহায্য / সার্ভিস অনুরোধ</h3><form id="sr"><label>ধরন</label><select id="k">'+Object.keys(K).map(function(k){return '<option value="'+k+'">'+K[k]+'</option>';}).join('')+'</select><label>বিস্তারিত *</label><textarea id="msg" rows="3" required maxlength="1000"></textarea><button class="btn">পাঠান</button><div id="m"></div></form><p class="note">জরুরি হলে ফোন/WhatsApp: +91 98627 68900</p></div><div class="card"><h3>আপনার অনুরোধ</h3>'+((r.data||[]).map(function(x){return '<div class="item"><b>'+K[x.kind]+'</b> <span class="pill '+(x.status==='done'?'g':'y')+'">'+S[x.status]+'</span><p style="white-space:pre-wrap;margin:4px 0">'+esc(x.message)+'</p>'+(x.reply?'<p><b>উত্তর:</b> '+esc(x.reply)+'</p>':'')+'</div>';}).join('')||'<p class="note">কোনো অনুরোধ নেই।</p>')+'</div>';
+    $('#sr').onsubmit=function(e){e.preventDefault();sb.from('service_requests').insert({kind:$('#k').value,message:$('#msg').value,customer_id:C.id}).then(function(x){x.error?$('#m').innerHTML='<div class="err">'+esc(x.error.message)+'</div>':V.help();});};});};
+V.terms=function(){sb.from('cms_pages').select('title,body,audience').in('audience',['public','customer']).eq('kind','policy').order('sort').then(function(a){sb.from('cms_pages').select('title,body').eq('slug','refer-and-earn-terms').then(function(b){var l=(a.data||[]).concat(b.data||[]);$('#v').innerHTML='<div class="card"><h3>📜 শর্তাবলি ও গোপনীয়তা</h3>'+(l.map(function(x){return '<details><summary><b>'+esc(x.title)+'</b></summary>'+rich(x.body)+'</details>';}).join('')||'<p class="note">লোড হচ্ছে…</p>')+'</div>';});});};
+boot();
+/* ===== TPSW: wellbeing tools shared by staff & customer pages (breathing, meditation timer, routines, daily thought) ===== */
+var TPSW=(function(){
+  var css='.wl-c{background:#fff;border:1px solid #d9e6dd;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 2px 8px #0001}.wl-c h3{margin:0 0 6px;color:#0f5c37}.wl-n{font-size:13px;color:#5b6b7a;line-height:1.55}'
+  +'.wl-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}.wl-chip{border:1.5px solid #b9d3c3;background:#fff;color:#0f5c37;border-radius:99px;padding:7px 13px;font-weight:700;cursor:pointer;font-size:14px}.wl-chip.on{background:#0f6b3f;color:#fff;border-color:#0f6b3f}'
+  +'.wl-stage{display:flex;flex-direction:column;align-items:center;gap:10px;padding:10px 0}.wl-orb{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fde68a,#f59e0b 60%,#d97706);box-shadow:0 0 40px #f59e0b66;transform:scale(.6);transition:transform 4s ease-in-out;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;text-shadow:0 1px 3px #0006}'
+  +'.wl-cue{font-size:20px;font-weight:800;color:#0f5c37;min-height:28px}.wl-btn{border:0;border-radius:99px;padding:11px 22px;font-weight:800;font-size:15px;cursor:pointer;color:#fff;background:#0f6b3f}.wl-btn.alt{background:#fff;color:#0f6b3f;border:2px solid #0f6b3f}'
+  +'.wl-bar{height:8px;background:#e2ebe5;border-radius:9px;overflow:hidden;width:100%}.wl-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#16a05a,#f59e0b)}'
+  +'.wl-det{border:1px solid #e1ebe4;border-radius:12px;margin:6px 0;background:#fbfdfb}.wl-det summary{padding:10px 12px;font-weight:800;color:#10243a;cursor:pointer}.wl-det div{padding:0 14px 12px;font-size:14px;line-height:1.7;color:#33475b}.wl-det li{margin:3px 0}';
+  function injectCss(){if(document.getElementById('wl-css'))return;var s=document.createElement('style');s.id='wl-css';s.textContent=css;document.head.appendChild(s);}
+  function chime(){try{var A=window.AudioContext||window.webkitAudioContext,c=new A(),o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=528;o.connect(g);g.connect(c.destination);g.gain.setValueAtTime(.0001,c.currentTime);g.gain.exponentialRampToValueAtTime(.25,c.currentTime+.05);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+2.2);o.start();o.stop(c.currentTime+2.3);}catch(e){}}
+  var PAT={box:{n:'বক্স ৪-৪-৪-৪',p:[[4,'শ্বাস নিন',1],[4,'ধরে রাখুন',1],[4,'ছাড়ুন',.6],[4,'বিরতি',.6]]},r478:{n:'৪-৭-৮ (ঘুমের আগে)',p:[[4,'শ্বাস নিন',1],[7,'ধরে রাখুন',1],[8,'ধীরে ছাড়ুন',.6]]},calm:{n:'শান্ত ৪-৬',p:[[4,'শ্বাস নিন',1],[6,'ধীরে ছাড়ুন',.6]]}};
+  function breath(host,onDone){injectCss();var pat='box',mins=3,run=null;
+    host.innerHTML='<div class="wl-c"><h3>🌬 শ্বাস-ধ্যান (গাইডেড)</h3><p class="wl-n">আরাম করে বসুন, কাঁধ ঢিলে। বৃত্তের সঙ্গে শ্বাস নিন-ছাড়ুন। অস্বস্তি বা মাথা ঘুরলে স্বাভাবিক শ্বাসে ফিরুন।</p><div class="wl-row" id="wl-pat"></div><div class="wl-row" id="wl-min"></div><div class="wl-stage"><div class="wl-orb" id="wl-orb">●</div><div class="wl-cue" id="wl-cue">প্রস্তুত?</div><div class="wl-bar"><i id="wl-prog"></i></div><div class="wl-n" id="wl-left"></div><button class="wl-btn" id="wl-go">▶ শুরু করুন</button></div></div>';
+    var $=function(i){return host.querySelector(i)};
+    function chips(){$('#wl-pat').innerHTML=Object.keys(PAT).map(function(k){return '<button type="button" class="wl-chip'+(k===pat?' on':'')+'" data-k="'+k+'">'+PAT[k].n+'</button>';}).join('');$('#wl-min').innerHTML=[1,3,5].map(function(m){return '<button type="button" class="wl-chip'+(m===mins?' on':'')+'" data-m="'+m+'">'+m+' মিনিট</button>';}).join('');}
+    chips();host.addEventListener('click',function(e){var b=e.target.closest('.wl-chip');if(!b||run)return;if(b.dataset.k)pat=b.dataset.k;if(b.dataset.m)mins=+b.dataset.m;chips();});
+    function stop(done){if(run){clearInterval(run.t);run=null;}$('#wl-go').textContent='▶ শুরু করুন';$('#wl-orb').style.transform='scale(.6)';$('#wl-cue').textContent=done?'সম্পন্ন ✔ ধন্যবাদ নিজেকে':'প্রস্তুত?';if(done){chime();$('#wl-prog').style.width='100%';onDone&&onDone(mins);}}
+    $('#wl-go').onclick=function(){if(run){stop(false);return;}var P=PAT[pat].p,total=mins*60,t0=Date.now(),idx=-1,ph=0;$('#wl-go').textContent='■ থামান';
+      run={t:setInterval(function(){var el=(Date.now()-t0)/1000;if(el>=total){stop(true);return;}$('#wl-prog').style.width=(el/total*100)+'%';$('#wl-left').textContent='বাকি '+Math.ceil(total-el)+' সেকেন্ড';
+        var cyc=P.reduce(function(a,x){return a+x[0]},0),m=el%cyc,i=0,acc=0;while(m>=acc+P[i][0]){acc+=P[i][0];i++;}
+        if(i!==idx){idx=i;var o=$('#wl-orb');o.style.transition='transform '+P[i][0]+'s ease-in-out';o.style.transform='scale('+P[i][2]+')';$('#wl-cue').textContent=P[i][1];}},200)};};
+    return {stop:function(){stop(false);}};}
+  function timer(host,onDone){injectCss();var mins=10,run=null;
+    host.innerHTML='<div class="wl-c"><h3>🧘 ধ্যান / নীরবতা / প্রার্থনার টাইমার</h3><p class="wl-n">নিজের বিশ্বাস বা পদ্ধতি অনুযায়ী—ধ্যান, জপ, প্রার্থনা বা শুধু নীরব বসা। শুরু ও শেষে মৃদু ঘণ্টা বাজবে।</p><div class="wl-row" id="wm-min"></div><div class="wl-stage"><div class="wl-cue" id="wm-t">10:00</div><div class="wl-bar"><i id="wm-p"></i></div><button class="wl-btn" id="wm-go">🔔 শুরু করুন</button></div></div>';
+    var $=function(i){return host.querySelector(i)};function f(s){s=Math.max(0,Math.ceil(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2);}
+    function chips(){$('#wm-min').innerHTML=[5,10,15,20,30].map(function(m){return '<button type="button" class="wl-chip'+(m===mins?' on':'')+'" data-m="'+m+'">'+m+' মিনিট</button>';}).join('');$('#wm-t').textContent=f(mins*60);}
+    chips();host.addEventListener('click',function(e){var b=e.target.closest('#wm-min .wl-chip');if(!b||run)return;mins=+b.dataset.m;chips();});
+    function stop(done){if(run){clearInterval(run.t);run=null;}$('#wm-go').textContent='🔔 শুরু করুন';if(done){chime();$('#wm-t').textContent='সম্পন্ন ✔';$('#wm-p').style.width='100%';onDone&&onDone(mins);}else chips();}
+    $('#wm-go').onclick=function(){if(run){stop(false);return;}var t0=Date.now(),tot=mins*60;chime();$('#wm-go').textContent='■ শেষ করুন';run={t:setInterval(function(){var el=(Date.now()-t0)/1000;if(el>=tot){stop(true);return;}$('#wm-t').textContent=f(tot-el);$('#wm-p').style.width=(el/tot*100)+'%';},500)};};
+    return {stop:function(){stop(false);}};}
+  var THOUGHTS=['আজ একটি ছোট ভালো কাজ করুন—নিজের জন্য বা অন্যের জন্য।','তাড়াহুড়োয় নয়, শান্ত মনে নেওয়া সিদ্ধান্ত বেশিদিন টেকে।','“না” শুনলে নিজেকে দোষ দেবেন না—পরের দরজা আপনার অপেক্ষায়।','শরীর সুস্থ থাকলে মন হালকা থাকে—আজ ১০ মিনিট হাঁটুন।','গ্রাহকের বিশ্বাস এক দিনে তৈরি হয় না, কিন্তু এক কথায় ভাঙতে পারে—সৎ থাকুন।','যে কাজ আপনি নিয়ন্ত্রণ করতে পারেন সেখানে মন দিন; বাকিটা ছেড়ে দিন।','একটি গভীর শ্বাস নিন। আপনি যথেষ্ট ভালো করছেন।','বিশ্রাম অলসতা নয়—এটি পরের কাজের জ্বালানি।','আজ কাউকে ধন্যবাদ জানান।','অন্যের সঙ্গে নয়, গতকালের নিজের সঙ্গে তুলনা করুন।','পরিবারকে সময় দেওয়াও কাজ—সম্পর্কই সবচেয়ে বড় সম্পদ।','সূর্য প্রতিদিন নতুন করে ওঠে—আজও নতুন শুরু করা যায়।','ছোট অভ্যাস, বড় পরিবর্তন—রোজ ৫ মিনিটই যথেষ্ট।','কঠিন সময়ে সাহায্য চাওয়া সাহসের কাজ।'];
+  function thought(){var d=Math.floor(Date.now()/864e5);return THOUGHTS[d%THOUGHTS.length];}
+  function det(t,h){return '<details class="wl-det"><summary>'+t+'</summary><div>'+h+'</div></details>';}
+  function routines(){injectCss();return '<div class="wl-c"><h3>💪 শরীর: ছোট ব্যায়াম</h3>'
+   +det('⏱ ৫ মিনিটের ডেস্ক-স্ট্রেচ','<ul><li>ঘাড়: ডানে-বামে-সামনে ধীরে ঝোঁকান (১০ সেকেন্ড করে)</li><li>কাঁধ: ১০ বার ওপরে-পিছনে ঘোরান</li><li>হাত ওপরে তুলে লম্বা হোন; দুই পাশে ঝুঁকুন</li><li>কব্জি ঘোরান, আঙুল ছড়ান</li><li>দাঁড়িয়ে সামনে ঝুঁকে পায়ের পেছন ২০ সেকেন্ড</li></ul>')
+   +det('☀️ সূর্য নমস্কার (২-৬ চক্র)','১ প্রণামাসন → ২ হাত ওপরে → ৩ সামনে ঝোঁকা → ৪ এক পা পিছনে → ৫ পর্বতাসন → ৬ অষ্টাঙ্গ নমস্কার → ৭ ভুজঙ্গাসন → ৮ পর্বতাসন → ৯ পা সামনে → ১০ সামনে ঝোঁকা → ১১ হাত ওপরে → ১২ প্রণামাসন। শ্বাসের সঙ্গে ধীরে; ব্যথা হলে থামুন।')
+   +det('👁 চোখ: ২০-২০-২০','প্রতি ২০ মিনিটে ২০ ফুট দূরে ২০ সেকেন্ড তাকান; ইচ্ছে করে পলক ফেলুন।')
+   +det('🚶 হাঁটা ও জল','রোজ ৩০ মিনিট দ্রুত হাঁটা; দিনে ২-৩ লিটার জল (ডাক্তার অন্যথা বললে ছাড়া); ভাত-ডালের পাশে সবজি ও ফল।')
+   +det('🛡 ছাদে কাজ করলে','কাজের আগে ওয়ার্ম-আপ; চরম রোদে ঘন ঘন জল ও বিরতি; ক্লান্ত বা অসুস্থ হলে উঁচুতে নয়।')
+   +'<p class="wl-n">ব্যথা, মাথা ঘোরা বা রোগ থাকলে ডাক্তারের পরামর্শ নিন।</p></div>';}
+  function psych(){injectCss();return '<div class="wl-c"><h3>🧠 মন: মনস্তাত্ত্বিক অনুশীলন</h3>'
+   +det('🖐 ৫-৪-৩-২-১ গ্রাউন্ডিং (উদ্বেগ বাড়লে)','৫টি জিনিস দেখুন · ৪টি ছুঁয়ে দেখুন · ৩টি শব্দ শুনুন · ২টি গন্ধ · ১টি স্বাদ। ধীরে শ্বাস নিন।')
+   +det('🔁 চিন্তা বদলান (রিফ্রেম)','<p>লিখুন: ঘটনা → আমার চিন্তা → প্রমাণ আছে কি? → আরও বাস্তবসম্মত ভাবনা → পরের ধাপ।</p><p><i>উদাহরণ: গ্রাহক ফোন কাটলেন → “আমি অযোগ্য” → প্রমাণ নেই, তিনি ব্যস্ত ছিলেন → বিকেলে আবার চেষ্টা।</i></p>')
+   +det('🕰 দুশ্চিন্তার ১০ মিনিট','দিনে একটি নির্দিষ্ট সময়ে দুশ্চিন্তা ও সমাধান লিখুন; বাকি সময় কাজ ও পরিবার।')
+   +det('🌟 ছোট জয়ের খাতা','রাতে ৩টি ভালো কাজ/কৃতজ্ঞতা লিখুন—মস্তিষ্ক ইতিবাচক বিষয় বেশি মনে রাখতে শেখে।')
+   +det('🤝 কথা বলুন','মন ভারী থাকলে বিশ্বাসী কারও সঙ্গে কথা বলুন। Tele-MANAS: <b>১৪৪১৬</b> (বিনামূল্যে, ২৪×৭); জরুরি বিপদে <b>১১২</b>।')
+   +'</div>';}
+  return {breath:breath,timer:timer,thought:thought,routines:routines,psych:psych,css:injectCss,det:det};
+})();
+
+</script></body></html>
